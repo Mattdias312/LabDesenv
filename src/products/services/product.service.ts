@@ -2,9 +2,9 @@ import { Injectable } from '@nestjs/common';
 import { ProductRepository } from '../product.repository';
 
 @Injectable()
-export class GetProductByIdService {
+export class ProductService {
   constructor(private productRepository: ProductRepository) {}
-  execute(id: number): any {
-    return this.productRepository.getById(id);
+  execute(): any[] {
+    return this.productRepository.list();
   }
 }
