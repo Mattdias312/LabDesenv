@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+// eslint-disable-next-line prettier/prettier
+import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { ProductService as ProductService } from './services/product.service';
 import { GetProductByIdService } from './services/get-product-byid.service';
 import { ProductInterface } from './product.interface';
@@ -34,5 +35,10 @@ export class ProductController {
   @Put(':id')
   update(@Param('id') id: string, @Body() product: ProductInterface) {
     this.createProductService.update(Number(id), product);
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    this.createProductService.delete(Number(id));
   }
 }

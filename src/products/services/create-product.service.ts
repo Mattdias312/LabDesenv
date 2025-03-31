@@ -12,4 +12,8 @@ export class CreateProductService {
   update(id: number, product: ProductInterface): void {
     this.productRepository.update(id, product);
   }
+
+  delete(id: number): void {
+    this.productRepository.delete(id);
+  }
 }

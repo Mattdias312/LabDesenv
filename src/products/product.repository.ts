@@ -8,8 +8,10 @@ export class ProductRepository {
     this.products.push(product);
   }
   update(id: number, product: ProductInterface): void {
-    this.products = this.products.filter((p) => p.id !== id);
-    this.products.push(product);
+    this.list();
+    this.products.splice(id - 1, 1, product);
+    // this.products = this.products.filter((p) => p.id !== id);
+    // this.products.push(product);
   }
 
   getById(id: number): ProductInterface {
@@ -18,7 +20,11 @@ export class ProductRepository {
     return product;
   }
   list() {
+    this.products = this.products.sort((a, b) => a.id - b.id);
     return this.products;
   }
-  delete() {}
+  delete(id: number): void {
+    this.list();
+    this.products.splice(id - 1, 1);
+  }
 }
