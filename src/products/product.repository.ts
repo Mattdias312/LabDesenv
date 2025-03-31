@@ -10,8 +10,6 @@ export class ProductRepository {
   update(id: number, product: ProductInterface): void {
     this.list();
     this.products.splice(id - 1, 1, product);
-    // this.products = this.products.filter((p) => p.id !== id);
-    // this.products.push(product);
   }
 
   getById(id: number): ProductInterface {
