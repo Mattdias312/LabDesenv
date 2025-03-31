@@ -7,7 +7,11 @@ export class ProductRepository {
   create(product: ProductInterface): void {
     this.products.push(product);
   }
-  update() {}
+  update(id: number, product: ProductInterface): void {
+    this.products = this.products.filter((p) => p.id !== id);
+    this.products.push(product);
+  }
+
   getById(id: number): ProductInterface {
     const product = this.products.find((product) => product.id === id);
     if (!product) throw Error('Produto não encontrado');
